@@ -12,8 +12,14 @@ RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git lib
 
 # ------------------------------------------------------------------------------
 # Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
+# RUN curl -sL https://deb.nodesource.com/setup | bash -
+# RUN apt-get install -y nodejs
+
+# ------------------------------------------------------------------------------
+# Install nvm & node
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . /root/.nvm/nvm.sh && nvm install 7 && nvm use 7
     
 # ------------------------------------------------------------------------------
 # Install Cloud9
